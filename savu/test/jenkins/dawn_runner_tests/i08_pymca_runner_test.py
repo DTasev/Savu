@@ -101,8 +101,8 @@ class I08PymcaRunnerTest(unittest.TestCase):
             out = self.runSavu(path2plugin, params, metaOnly, inputs)
             aux = out['auxiliary']
             entry = 'entry/auxiliary/0-Python Script - Savu/'
-            for key in aux.keys():
-                print(key,x,y)
+            for key in list(aux.keys()):
+                print((key,x,y))
                 foo=data_file[entry+key+'/data'][x,y]
                 self.assertAlmostEqual(aux[key],foo,delta=0.5)
 
@@ -162,8 +162,8 @@ class I08PymcaRunnerTest(unittest.TestCase):
             out = self.runSavu(path2plugin, params, metaOnly, inputs)
             aux = out['auxiliary']
             entry = 'entry/auxiliary/0-Python Script - Savu/'
-            for key in aux.keys():
-                print(key,x,y)
+            for key in list(aux.keys()):
+                print((key,x,y))
                 foo=data_file[entry+key+'/data'][x,y]
                 self.assertAlmostEqual(aux[key],foo,delta=0.5)
 
