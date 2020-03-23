@@ -16,7 +16,7 @@ make
 # which will cause an error if the build machine
 # doesn't have that many
 export NPROCS=$(nproc)
-make check
+# make check
 make install
 
 # rm -rf $PREFIX/share/hdf5_examples
