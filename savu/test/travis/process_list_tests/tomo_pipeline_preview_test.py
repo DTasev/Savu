@@ -29,7 +29,6 @@ from savu.test.travis.framework_tests.plugin_runner_test import \
     run_protected_plugin_runner
 
 
-#@unittest.skip('Runs as a standalone test but not in the suite. Error to be investigated')
 class TomoPipelinePreviewTest(unittest.TestCase):
 
     def test_process_preview(self):
@@ -38,6 +37,7 @@ class TomoPipelinePreviewTest(unittest.TestCase):
             tu.get_test_process_path('tomo_pipeline_preview_test.nxs')
         run_protected_plugin_runner(tu.set_options(data_file,
                                                    process_file=process_file))
+
 
 if __name__ == "__main__":
     unittest.main()
