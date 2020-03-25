@@ -27,8 +27,22 @@ from savu.test.travis.framework_tests.plugin_runner_test import \
     run_protected_plugin_runner
 
 
+def dezinger_has_been_implemented_in_python():
+    try:
+        from savu.plugins.filters import dezinger  # noqa: F401
+        return True
+    except ModuleNotFoundError:
+        return False
+
+
+reason = """Dezinger was a C plugin that was removed during the move to Python 3.
+There is a task to reimplement it purely in Python, so once that is done this
+test doesn't need to be skipped anymore"""
+
+
 class DezingerTest(unittest.TestCase):
 
+    @unittest.skipUnless(dezinger_has_been_implemented_in_python(), reason)
     def test_dezinger(self):
         data_file = tu.get_test_data_path('24737.nxs')
         process_file = tu.get_test_process_path('dezinger_test.nxs')
