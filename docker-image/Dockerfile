@@ -24,9 +24,11 @@ RUN tar -xf openmpi-${OPENMPI}.tar.gz && \
 # Get and install Savu
 COPY get-and-install-savu.sh /get-and-install-savu.sh
 RUN chmod +x /get-and-install-savu.sh && \
-    /get-and-install-savu.sh $VERSION
+    /get-and-install-savu.sh $VERSION && \
+    /miniconda/bin/conda clean --all --yes && \
+    rm -rf /tmp/*
 
-RUN /usr/local/miniconda/bin/python -m pip install gnureadline==6.3.8
+RUN /miniconda/bin/python -m pip install gnureadline==6.3.8
 ENV LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 RUN ldconfig
 
